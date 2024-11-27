@@ -1,70 +1,62 @@
-import React from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
-  Image,
-} from "@nextui-org/react";
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Navbar, Button, NavbarBrand, NavbarContent } from '@nextui-org/react';
 
-const LandingNavbar = () => {
+interface NavbarProps {
+  logoSrc?: string;
+}
+
+const navItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+];
+
+export function LandingNavbar({ logoSrc }: NavbarProps) {
   return (
-    <Navbar maxWidth="full" isBlurred className="py-3 bg-red-500">
+    <Navbar
+    maxWidth='2xl'
+    isBlurred
+shouldHideOnScroll
+      className="text-white bg-gradient-to-r from-gray-900 to-indigo-950"
+    >
       <NavbarBrand>
-        <Link href="/">
-        <Image
-          src="logo.png"
-          alt="Plebes Burger"
-          width={80}
-          height={80}
-          className="my-2"
-        />
-        </Link>
-   
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" className="text-xl text-white font-bold" href="/#home">
-            Inicio
+        {logoSrc && (
+          <Link href="/">
+            <Image
+              src={logoSrc}
+              alt="Logo"
+              width={500}
+              height={500}
+              className="h-20 w-auto"
+            />
           </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" className="text-xl text-white font-bold"  href="/#services">
-            Menu
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" className="text-xl text-white font-bold"  href="/#gallery">
-            Galería
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" className="text-xl text-white font-bold"  href="/#testimonials">
-            Nuestros clientes
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" className="text-xl text-white font-bold"  href="/#contact">
-            Contacto
-          </Link>
-        </NavbarItem>
+        )}
+              </NavbarBrand>
+        <NavbarContent className="space-x-4" justify='center'>
+          {navItems.map((item) => (
+            <Link key={item.name} href={item.href}>
+              <Button
+                variant="light"
+                className="text-white hover:bg-gray-700"
+              >
+                {item.name}
+              </Button>
+            </Link>
+          ))}
+        </NavbarContent>
+
+      <NavbarContent justify='end'>
+        <Button
+          color="primary"
+          className="bg-blue-500 hover:bg-blue-600"
+        >
+          Get Started
+        </Button>
       </NavbarContent>
-      {/* <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Button variant="flat"  >
-            <Link href="#" color="foreground" className="text-xl text-white font-bold" >Login</Link>
-          </Button>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat" className="text-xl text-white font-bold" >
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent> */}
     </Navbar>
   );
-};
+}
 
-export default LandingNavbar;
