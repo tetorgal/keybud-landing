@@ -8,11 +8,12 @@ interface NavbarProps {
 }
 
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Home', href: '#home' },
+  { name: 'Services', href: '#services' },
+  { name: 'About', href: '#about' },
+  { name: 'Contact', href: '#contact' },
 ];
+
 
 export function LandingNavbar({ logoSrc }: NavbarProps) {
   return (

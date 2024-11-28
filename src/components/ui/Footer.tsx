@@ -44,30 +44,21 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Enlaces rápidos</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/sobre-nosotros" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#About" className="text-gray-400 hover:text-white transition-colors">
                   Acerca de nosotros
                 </Link>
               </li>
               <li>
-                <Link href="/servicios" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#Services" className="text-gray-400 hover:text-white transition-colors">
                   Servicios
                 </Link>
               </li>
               <li>
-                <Link href="/proyectos" className="text-gray-400 hover:text-white transition-colors">
-                  Proyectos
+                <Link href="#Contact" className="text-gray-400 hover:text-white transition-colors">
+                  Contacto
                 </Link>
               </li>
-              <li>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/carreras" className="text-gray-400 hover:text-white transition-colors">
-                  Carreras
-                </Link>
-              </li>
+         
             </ul>
           </div>
 
@@ -105,7 +96,7 @@ export default function Footer() {
 
           {/* Informaci n de contacto */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Cont ctanos</h3>
+            <h3 className="text-white font-semibold mb-4">Contáctanos</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-indigo-400 mt-0.5" />
@@ -133,13 +124,13 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} KeyBud. Todos los derechos reservados.
             </div>
             <div className="flex space-x-6">
-              <Link href="/politica-de-privacidad" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Pol tica de privacidad
               </Link>
-              <Link href="/terminos-y-condiciones" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Términos y condiciones
               </Link>
-              <Link href="/politica-de-cookies" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Política de cookies
               </Link>
             </div>
