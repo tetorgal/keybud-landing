@@ -10,7 +10,7 @@ import { LandingNavbar } from "@/components/ui/Navbar";
 import ServiceCards from "@/components/ServiceCards";
 import Companies from "@/components/ui/Companies";
 import OurCompany from "@/components/OurCompany";
-import CanvasCursor from "@/cursor/CanvasCursor";
+
 export default function Home() {
   return (
     <div className="min-h-screen text-gray-200 bg-gray-900">
@@ -21,7 +21,7 @@ export default function Home() {
           content="Tu idea, nuestro equipo, tu experiencia"
         />
       </Head>
-      <CanvasCursor />
+      {/* <CanvasCursor /> */}
       <LandingNavbar logoSrc="/KeyBudLogo.png" />
 
       {/* Hero Section */}
