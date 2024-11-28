@@ -1,46 +1,53 @@
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@nextui-org/button";
 
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@nextui-org/button"
+
 
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-indigo-950">
       <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
-          <motion.div 
-            className="flex flex-col justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-              <span className="block">Unlock Your</span>
-              <span className="block text-indigo-400">Software Potential</span>
-            </h1>
-            <p className="mt-4 max-w-md text-xl text-gray-300">
-              KeyBud empowers businesses with cutting-edge software solutions and expert consulting services.
-            </p>
-            <div className="mt-8">
-              <Button size="lg" className="rounded-full bg-indigo-600 text-white hover:bg-indigo-700">
-                Get Started
-              </Button>
+          <div className="flex flex-col justify-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+                <span className="block">Libera Tu</span>
+                <span className="block text-indigo-400">Capacidad Tecnológica</span>
+              </h1>
+              <p className="mt-4 max-w-md text-xl text-gray-300 hover:cursor-pointer z-10">
+                En KeyBud ayudamos a empresas a alcanzar el éxito con soluciones tecnológicas innovadoras y servicios de consultoría expertos.
+              </p>
+            </motion.div>
+            <div className="mt-8 z-20">
+           <Button className="bg-indigo-600 hover:bg-indigo-700 text-white">Comienza ahora</Button>
             </div>
-          </motion.div>
+          </div>
           <motion.div 
             className="relative"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Image
-              src="/placeholder.svg?height=400&width=400"
-              alt="Software consulting illustration"
-              width={400}
-              height={400}
-              className="rounded-lg shadow-xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-30"></div>
+            <motion.div
+              initial={{ y: -100 }}
+              animate={{ y: 0}}
+
+              transition={{ duration: 1.3, delay: 0.4 }}
+            >
+              <Image src="/Graphs.png" alt="Hero Image" width={500} height={500} className="absolute z-20 rounded-xl transform rotate-12 translate-x-32 transalate-y-1/3 shadow-lg shadow-indigo-950/50" />
+            </motion.div>
+            <motion.div
+              initial={{ x: 100 }}
+              animate={{ x: 0}}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <Image src="/Checkout.png" alt="Hero Image" width={500} height={500} className="rounded-xl" />
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -56,4 +63,3 @@ export default function HeroSection() {
     </section>
   )
 }
-

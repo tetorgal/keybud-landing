@@ -1,32 +1,158 @@
-"use client";
-import React from "react";
-import { Card } from "@nextui-org/react"; // Importing NextUi elements
+'use client'
 
-export default function Contact() {
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+
+import { Mail, MessageSquare, Phone } from 'lucide-react'
+import { Button, Card, Input, Textarea } from '@nextui-org/react'
+
+export default function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setIsSubmitting(false)
+  }
+
   return (
-    <section className="w-full mx-auto py-24 bg-red-100 flex justify-center items-center">
-      <Card className="w-[46rem] py-12">
-        <div className="space-y-6 mb-12 w-full">
-          <h3 className="text-4xl font-extrabold mb-4 text-center text-balance">
-            Aqui estamos ubicados
-          </h3>
-          <p className="text-center text-xl">
-            Ven y prueba la mejor hamburguesa de Durango
-          </p>
+    <section className="relative py-24 overflow-hidden" id="contact">
+        
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-indigo-950/50 pointer-events-none" />
+      <div
+          className="absolute -top-36 right-0 translate-x-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"
+          aria-hidden="true"
+        />
+      <div className="container mx-auto px-4 relative">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl font-extrabold   text-white mb-4">Contactanos</h2>
+            <p className="text-gray-400 text-lg">
+              Listo para transformar tu negocio? Contáctanos hoy para obtener una consulta.
+            </p>
+          </motion.div>
         </div>
-        <div className="max-w-md mx-auto flex justify-center items-center">
-          {/* Google Maps iframe */}
-          <iframe
-           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.160313761416!2d-104.64084368837327!3d24.025411278394017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869bb7e391510e07%3A0x6695b240c5736589!2sPlebes%20Burger%20Rodriguez!5e0!3m2!1ses-419!2smx!4v1730749091142!5m2!1ses-419!2smx"
-            width="800"
-            height="400"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-1 space-y-6"
+          >
+            <Card className="p-6 bg-gray-800/50 border-gray-700">
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="p-2 bg-indigo-900/50 rounded-lg">
+                    <Mail className="h-6 w-6 text-indigo-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-200">Correo electrónico</p>
+                    <p className="text-sm text-gray-400">contacto@keybud.com</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="p-2 bg-indigo-900/50 rounded-lg">
+                    <Phone className="h-6 w-6 text-indigo-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-200">Teléfono</p>
+                    <p className="text-sm text-gray-400">+1 (555) 000-0000</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="p-2 bg-indigo-900/50 rounded-lg">
+                    <MessageSquare className="h-6 w-6 text-indigo-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-200">Chat en vivo</p>
+                    <p className="text-sm text-gray-400">Disponible 24/7</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2"
+          >
+            <Card className="p-6 bg-gray-800/50 border-gray-700">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    
+                    <Input
+                      id="firstName"
+                      label={<span className="text-gray-200">Nombre</span>}
+                      placeholder="Enter your first name"
+                      variant='bordered'
+                      required
+                      className="bg-gray-700/50 border-gray-600 text-gray-100 placeholder:text-gray-400"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Input
+                      id="lastName"
+                      label={<span className="text-gray-200">Apellido</span>}
+                      placeholder="Enter your last name"
+                      required
+                      variant='bordered'
+                      className="bg-gray-700/50 border-gray-600 text-gray-200 placeholder:text-gray-400"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                 
+                  <Input
+                    id="email"
+                    type="email"
+                    label={<span className="text-gray-200">Email</span>}
+                    placeholder="Enter your email"
+                    variant='bordered'
+                    required
+                    className="bg-gray-700/50 border-gray-600 text-gray-100 placeholder:text-gray-400"
+                  />
+                </div>
+                <div className="space-y-2">
+               
+                  <Textarea
+                    id="message"
+                    label={<span className="text-gray-200">Mensaje</span>}
+                    placeholder="Enter your message"
+                    variant='bordered'
+                    required
+                    className=" bg-gray-700/50 border-gray-600 text-gray-100 placeholder:text-gray-400"
+                  />
+                </div>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </Button>
+              </form>
+            </Card>
+          </motion.div>
         </div>
-      </Card>
+     
+      </div>
     </section>
-  );
+  )
 }
+

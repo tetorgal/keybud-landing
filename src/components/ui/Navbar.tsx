@@ -51,9 +51,10 @@ shouldHideOnScroll
       <NavbarContent justify='end'>
         <Button
           color="primary"
-          className="bg-blue-500 hover:bg-blue-600"
+          href='#contact'
+          className="bg-indigo-500 hover:bg-blue-600"
         >
-          Get Started
+          Comenzar ahora
         </Button>
       </NavbarContent>
     </Navbar>
